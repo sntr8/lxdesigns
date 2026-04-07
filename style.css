@@ -52,7 +52,9 @@ a:hover { color: #fff; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('ak_stage_blur.jpg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   animation: fadeIn 1.6s 1s ease forwards;
 }
@@ -72,6 +74,7 @@ a:hover { color: #fff; }
   position: relative;
   text-align: center;
   z-index: 1;
+  margin-top: -25vh;
 }
 
 .logo {
@@ -210,11 +213,12 @@ h2::after {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .service-card.hover-reveal:hover img {
   transform: scale(1.04);
+  filter: blur(3px);
 }
 
 .service-card-overlay {
@@ -349,9 +353,10 @@ h2::after {
   filter: brightness(0.85);
 }
 
-.portfolio-item:hover img {
+.portfolio-item:hover img,
+.portfolio-item.touch-active img {
   transform: scale(1.04);
-  filter: brightness(1);
+  filter: brightness(0.7) blur(3px);
 }
 
 .portfolio-hover {
@@ -511,4 +516,5 @@ footer {
 @media (max-width: 600px) {
   section { padding: 4rem 0; }
   .services { grid-template-columns: 1fr; }
+  .hero-bg { background-position: top center; }
 }
