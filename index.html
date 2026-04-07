@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preload" as="image" href="img/desk_blur.png">
+  <meta name="description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sntrLXdesigns — Lighting Design</title>
@@ -52,7 +54,8 @@
           <img src="img/viz.png" alt="Consulting & Visualisation">
           <div class="service-card-overlay">
             <h3>Consulting &amp; Visualisation</h3>
-            <p>Pre-production planning, MA3 programming, previz renders, and technical rider preparation.</p>
+            <p>Pre-production planning, MA3 programming, show automation and network integration, previz renders, and technical
+              document preparation.</p>
           </div>
         </div>
       </div>
@@ -70,8 +73,12 @@
       </div>
       <div class="designer-text">
         <h2>Me</h2>
-        <p>I'm an MA certified Finnish lighting designer specialising in live concerts, touring productions, and events. I handle the full chain: design, MA3 programming, and operating, so the vision stays consistent from pre-production to showtime.</p>
-        <p>I work closely with artists and production teams to craft looks that serve the story on stage, not just illuminate it. Currently touring as LD/OP with Antti Ketonen.</p>
+        <p>I'm an MA certified Finnish lighting designer specialising in live concerts, touring productions, and events. By
+          leveraging modern pre-visualization software and advanced MA3 workflows, I handle the full chain of production so
+          the core vision stays consistent from the studio to the stage.</p>
+        <p>I work closely with artists and teams to craft dynamic looks that serve the story on stage. Whether adapting a
+          showfile for a tight club fit or scaling up for a festival stage, I focus on precision and impact. Currently touring
+          as LD/OP with Antti Ketonen.</p>
       </div>
     </div>
   </section>
@@ -82,7 +89,7 @@
       <h2>Portfolio</h2>
       <p class="section-sub">Selected work — more available on request.</p>
       <div class="portfolio-grid">
-        <div class="portfolio-item" data-gallery="antti-ketonen">
+        <div class="portfolio-item" data-gallery="antti-ketonen" tabindex="0" role="button">
           <img src="portfolio/thumb.php?dir=antti-ketonen&file=ak_stage.png" alt="Antti Ketonen">
           <div class="portfolio-hover">
             <div class="portfolio-hover-title">Antti Ketonen</div>
@@ -147,6 +154,13 @@
         } else {
           // Second tap (or desktop click): open gallery
           item.classList.remove('touch-active');
+          openGallery(key);
+        }
+      });
+
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
           openGallery(key);
         }
       });
