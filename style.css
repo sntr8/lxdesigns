@@ -10,11 +10,12 @@
 
 :root {
   --bg:       #0a0a0c;
-  --surface:  #111116;
-  --blue:     #3a9eff;
-  --blue-dim: #1a5a99;
+  --surface:  #060614;
+  --blue:     #6c7db5;
+  --blue-dim: #3d4a6e;
   --text:     #e0e4ee;
-  --muted:    #7a8099;
+  --muted:    #5f6169;
+  --credit:   #7a7b80;
   --font:     'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -53,7 +54,7 @@ a:hover { color: #fff; }
   inset: 0;
   background: url('ak_stage_blur.jpg') center/cover no-repeat;
   opacity: 0;
-  animation: fadeIn 1.6s 0.5s ease forwards;
+  animation: fadeIn 1.6s 1s ease forwards;
 }
 
 .hero-overlay {
@@ -79,17 +80,27 @@ a:hover { color: #fff; }
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #fff;
+  text-shadow: 0 0 30px rgba(0,0,0,0.3);
+  animation: sharpen 0.8s 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes sharpen {
+  0%   { filter: blur(8px); opacity: 0; }
+  40%  { filter: blur(8px); opacity: 1; }
+  100% { filter: blur(0);   opacity: 1; }
 }
 
 
 .tagline {
   margin-top: 1rem;
   font-size: clamp(0.9rem, 2vw, 1.15rem);
-  color: var(--muted);
+  color: #bebfc6;
+  text-shadow: 0 0 12px rgba(0,0,0,0.6);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 1s 0.5s ease forwards;
+  animation: fadeIn 1s 1.5s ease forwards;
 }
 
 .cta {
@@ -104,7 +115,7 @@ a:hover { color: #fff; }
   font-size: 0.85rem;
   transition: background 0.2s, color 0.2s;
   opacity: 0;
-  animation: fadeIn 1s 0.7s ease forwards;
+  animation: fadeIn 1s 1.7s ease forwards;
 }
 
 .cta:hover {
@@ -116,9 +127,21 @@ a:hover { color: #fff; }
   to { opacity: 1; }
 }
 
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+
 /* ===== SECTIONS ===== */
 section {
-  padding: 6rem 0;
+  padding: 3rem 0;
 }
 
 h2 {
@@ -145,7 +168,7 @@ h2::after {
 }
 
 /* ===== ABOUT / SERVICES ===== */
-#about { background: var(--surface); }
+#about { background: var(--bg); }
 
 #about > .container > p {
   max-width: 680px;
@@ -156,35 +179,89 @@ h2::after {
 
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
 }
 
-.service {
-  background: var(--bg);
-  border: 1px solid #1e2030;
-  border-radius: 4px;
-  padding: 1.8rem;
-  transition: border-color 0.2s;
+/* Shared card base */
+.service-card {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  position: relative;
 }
 
-.service:hover { border-color: var(--blue-dim); }
-
-.service .icon {
-  display: block;
-  color: var(--blue);
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-}
-
-.service h3 {
+.service-card h3 {
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  margin-bottom: 0.5rem;
 }
 
-.service p { color: var(--muted); font-size: 0.92rem; }
+.service-card p {
+  color: rgba(200, 215, 255, 0.85);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* === HOVER REVEAL CARD === */
+.service-card.hover-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.service-card.hover-reveal:hover img {
+  transform: scale(1.04);
+}
+
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.4rem 1.4rem 2.2rem;
+  background: linear-gradient(to top, rgba(0,10,30,0.85) 0%, rgba(0,10,30,0.3) 50%, transparent 100%);
+}
+
+.service-card-overlay p {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.service-card.hover-reveal:hover .service-card-overlay p {
+  max-height: 10rem;
+  margin-top: 0.4rem;
+}
+
+.service-card.hover-reveal:hover .service-card-overlay {
+  background: linear-gradient(to top, rgba(0,10,30,0.92) 0%, rgba(0,10,30,0.6) 55%, rgba(0,0,0,0.25) 100%);
+}
+
+.card-credit {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.6rem;
+  font-size: 0.55rem;
+  color: var(--credit);
+  opacity: 0;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.service-card.hover-reveal:hover .card-credit {
+  opacity: 0.4;
+}
+
+.card-credit:hover {
+  opacity: 1;
+  color: var(--blue);
+}
 
 /* ===== DESIGNER ===== */
 #designer { background: var(--bg); }
@@ -213,7 +290,7 @@ h2::after {
 
 .photo-credit {
   font-size: 0.55rem;
-  color: var(--muted);
+  color: var(--credit);
   letter-spacing: 0.02em;
   text-decoration: none;
   opacity: 0.4;
@@ -317,7 +394,8 @@ h2::after {
 }
 
 /* ===== CONTACT ===== */
-#contact { background: var(--surface); }
+#contact { background: linear-gradient(to bottom, var(--bg), var(--surface) 4rem); text-align: center; padding-top: 5rem; }
+#contact h2::after { margin-left: auto; margin-right: auto; }
 
 .contact-details {
   margin-top: 1rem;
@@ -331,6 +409,17 @@ h2::after {
 }
 
 .contact-link:hover { color: #fff; }
+
+.contact-social {
+  margin-top: 1.2rem;
+}
+
+.social-link {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.social-link:hover { color: #fff; }
 
 /* ===== LIGHTBOX ===== */
 #lightbox {
@@ -375,7 +464,7 @@ h2::after {
 .lb-credit {
   margin-left: 0.8rem;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--credit);
   opacity: 0.7;
 }
 .lb-credit:hover { opacity: 1; color: var(--blue); }
@@ -411,7 +500,7 @@ h2::after {
 
 /* ===== FOOTER ===== */
 footer {
-  background: #000;
+  background: var(--surface);
   text-align: center;
   padding: 1.5rem;
   color: var(--muted);

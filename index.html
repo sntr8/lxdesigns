@@ -14,31 +14,41 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="logo">sntrLXdesigns</div>
-      <p class="tagline">Lighting design for live events, concerts &amp; productions</p>
+      <p class="tagline">Lighting design and programming for live events and productions</p>
       <a href="#contact" class="cta">Get in touch</a>
     </div>
+    <a href="#about" class="scroll-hint" aria-label="Scroll down">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2>What we do</h2>
-      <p>sntrLXdesigns is a Finnish lighting design company specialising in live event production, concerts, and theatrical performances. From intimate club shows to large-scale productions, we craft lighting that serves the story on stage.</p>
+      <h2>What I do</h2>
+      <p>sntrLXdesigns is a Finnish lighting design company. Design, programming, and operation for live events — from club shows to large-scale tours.</p>
       <div class="services">
-        <div class="service">
-          <span class="icon">&#9675;</span>
-          <h3>Concert &amp; Tour Lighting</h3>
-          <p>Full lighting design and programming for touring artists and one-off shows.</p>
+        <div class="service-card hover-reveal">
+          <img src="concert--tamminenphotography.png" alt="Concert & Tour Lighting">
+          <div class="service-card-overlay">
+            <h3>Concert &amp; Tour Lighting</h3>
+            <p>Lighting design, programming, and operation for touring artists and one-off shows. From building the showfile to running the desk on the night.</p>
+            <a href="https://www.instagram.com/tamminenphotography/" class="card-credit" target="_blank" rel="noopener">Photo: @tamminenphotography</a>
+          </div>
         </div>
-        <div class="service">
-          <span class="icon">&#9675;</span>
-          <h3>Event Production</h3>
-          <p>Corporate events, festivals, and special occasions — from concept to execution.</p>
+        <div class="service-card hover-reveal">
+          <img src="prod.png" alt="Event Production">
+          <div class="service-card-overlay">
+            <h3>Event Production</h3>
+            <p>Corporate events, trade exhibitions, and special occasions. Full lighting solutions from concept to showtime, including equipment sourcing when needed.</p>
+          </div>
         </div>
-        <div class="service">
-          <span class="icon">&#9675;</span>
-          <h3>Consulting &amp; Visualisation</h3>
-          <p>Pre-production design, previz renders, and technical rider preparation.</p>
+        <div class="service-card hover-reveal">
+          <img src="viz.png" alt="Consulting & Visualisation">
+          <div class="service-card-overlay">
+            <h3>Consulting &amp; Visualisation</h3>
+            <p>Pre-production planning, MA3 programming, previz renders, and technical rider preparation.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -55,8 +65,8 @@
       </div>
       <div class="designer-text">
         <h2>Me</h2>
-        <p>Behind every show is someone who obsesses over the details — beam angles, colour temperature, timing to the beat. That's me.</p>
-        <p>I'm a Finnish lighting designer with experience across live concerts, touring productions, and events. I work closely with artists and production teams to build looks that feel intentional, not just illuminated.</p>
+        <p>I'm an MA certified Finnish lighting designer specialising in live concerts, touring productions, and events. I handle the full chain: design, MA3 programming, and operating, so the vision stays consistent from pre-production to showtime.</p>
+        <p>I work closely with artists and production teams to craft looks that serve the story on stage, not just illuminate it. Currently touring as LD/OP with Antti Ketonen.</p>
       </div>
     </div>
   </section>
@@ -86,6 +96,11 @@
       <p class="section-sub">Available for projects in Finland and internationally.</p>
       <div class="contact-details">
         <a href="mailto:sntr@lxdesigns.fi" class="contact-link">sntr@lxdesigns.fi</a>
+        <div class="contact-social">
+          <a href="https://www.instagram.com/_sntr_/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -104,6 +119,12 @@
   <script>
     // Define portfolio projects here — just title and key (directory name under portfolio/).
     // Photos are loaded automatically from the directory by gallery.php.
+    const hint = document.querySelector('.scroll-hint');
+    setTimeout(() => { hint.style.opacity = '1'; }, 2700);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) hint.style.opacity = '0';
+    }, { passive: true });
+
     const galleries = {
       'antti-ketonen': { title: 'Antti Ketonen', photos: null }
     };
@@ -189,7 +210,7 @@
   </script>
 
   <footer>
-    <p>&copy; 2026 sntrLXdesigns &mdash; Y-tunnus: <!-- add Y-tunnus here --></p>
+    <p>&copy; 2026 sntrLXdesigns &mdash; Y-tunnus: 3583437-1</p>
   </footer>
 
 </body>
