@@ -174,7 +174,6 @@ h2::after {
 #about { background: var(--bg); }
 
 #about > .container > p {
-  max-width: 680px;
   color: var(--muted);
   margin-bottom: 3rem;
   font-size: 1.05rem;
