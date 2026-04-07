@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sntrLXdesigns — Lighting Design</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="logo">sntrLXdesigns</div>
+      <p class="tagline">Lighting design for live events, concerts &amp; productions</p>
+      <a href="#contact" class="cta">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>What we do</h2>
+      <p>sntrLXdesigns is a Finnish lighting design company specialising in live event production, concerts, and theatrical performances. From intimate club shows to large-scale productions, we craft lighting that serves the story on stage.</p>
+      <div class="services">
+        <div class="service">
+          <span class="icon">&#9675;</span>
+          <h3>Concert &amp; Tour Lighting</h3>
+          <p>Full lighting design and programming for touring artists and one-off shows.</p>
+        </div>
+        <div class="service">
+          <span class="icon">&#9675;</span>
+          <h3>Event Production</h3>
+          <p>Corporate events, festivals, and special occasions — from concept to execution.</p>
+        </div>
+        <div class="service">
+          <span class="icon">&#9675;</span>
+          <h3>Consulting &amp; Visualisation</h3>
+          <p>Pre-production design, previz renders, and technical rider preparation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGNER -->
+  <section id="designer">
+    <div class="container designer-layout">
+      <div class="designer-img-wrap">
+        <div class="designer-img">
+          <img src="me.png" alt="sntrLXdesigns — lighting designer at work">
+        </div>
+        <a href="https://www.instagram.com/tamminenphotography/" class="photo-credit" target="_blank" rel="noopener">Photo: @tamminenphotography</a>
+      </div>
+      <div class="designer-text">
+        <h2>Me</h2>
+        <p>Behind every show is someone who obsesses over the details — beam angles, colour temperature, timing to the beat. That's me.</p>
+        <p>I'm a Finnish lighting designer with experience across live concerts, touring productions, and events. I work closely with artists and production teams to build looks that feel intentional, not just illuminated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <p class="section-sub">Selected work — more available on request.</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-item" data-gallery="antti-ketonen">
+          <img src="portfolio/thumb.php?dir=antti-ketonen&file=ak_stage.png" alt="Antti Ketonen">
+          <div class="portfolio-hover">
+            <div class="portfolio-hover-title">Antti Ketonen</div>
+            <div class="portfolio-hover-desc">Concert lighting design and programming for Antti Ketonen's live show.</div>
+          </div>
+        </div>
+        <!-- Add more projects here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="section-sub">Available for projects in Finland and internationally.</p>
+      <div class="contact-details">
+        <a href="mailto:sntr@lxdesigns.fi" class="contact-link">sntr@lxdesigns.fi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+    <button class="lb-prev" onclick="shiftPhoto(-1)">&#8249;</button>
+    <div class="lb-img-wrap" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <button class="lb-next" onclick="shiftPhoto(1)">&#8250;</button>
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <script>
+    // Define portfolio projects here — just title and key (directory name under portfolio/).
+    // Photos are loaded automatically from the directory by gallery.php.
+    const galleries = {
+      'antti-ketonen': { title: 'Antti Ketonen', photos: null }
+    };
+
+    // Portfolio card interaction — hover on desktop, tap-to-reveal on touch
+    const isTouch = window.matchMedia('(hover: none)').matches;
+
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const key = item.dataset.gallery;
+      item.addEventListener('click', e => {
+        if (isTouch && !item.classList.contains('touch-active')) {
+          // First tap: show overlay
+          document.querySelectorAll('.portfolio-item.touch-active').forEach(i => i.classList.remove('touch-active'));
+          item.classList.add('touch-active');
+        } else {
+          // Second tap (or desktop click): open gallery
+          item.classList.remove('touch-active');
+          openGallery(key);
+        }
+      });
+    });
+
+    // Dismiss overlay when tapping outside a card
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.portfolio-item')) {
+        document.querySelectorAll('.portfolio-item.touch-active').forEach(i => i.classList.remove('touch-active'));
+      }
+    });
+
+    let current = { key: null, index: 0 };
+
+    async function openGallery(key) {
+      const g = galleries[key];
+      if (!g.photos) {
+        const res = await fetch(`portfolio/gallery.php?dir=${encodeURIComponent(key)}`);
+        g.photos = await res.json();
+      }
+      current.key = key;
+      current.index = 0;
+      showPhoto();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showPhoto() {
+      const g = galleries[current.key];
+      const file = g.photos[current.index];
+      document.getElementById('lightbox-img').src = `portfolio/${current.key}/${file}`;
+
+      const counter = g.photos.length > 1 ? `\u2002${current.index + 1} / ${g.photos.length}` : '';
+      const captionEl = document.getElementById('lightbox-caption');
+      const creditMatch = file.replace(/\.[^.]+$/, '').match(/--(.+)$/);
+      if (creditMatch) {
+        const user = creditMatch[1];
+        captionEl.innerHTML = `${g.title}${counter} <a href="https://www.instagram.com/${user}/" target="_blank" rel="noopener" class="lb-credit">Photo: @${user}</a>`;
+      } else {
+        captionEl.textContent = g.title + counter;
+      }
+
+      const lb = document.getElementById('lightbox');
+      lb.querySelector('.lb-prev').style.visibility = current.index > 0 ? 'visible' : 'hidden';
+      lb.querySelector('.lb-next').style.visibility = current.index < g.photos.length - 1 ? 'visible' : 'hidden';
+    }
+
+    function shiftPhoto(dir) {
+      event.stopPropagation();
+      const g = galleries[current.key];
+      current.index = Math.max(0, Math.min(g.photos.length - 1, current.index + dir));
+      showPhoto();
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') shiftPhoto(-1);
+      if (e.key === 'ArrowRight') shiftPhoto(1);
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2026 sntrLXdesigns &mdash; Y-tunnus: <!-- add Y-tunnus here --></p>
+  </footer>
+
+</body>
+</html>
