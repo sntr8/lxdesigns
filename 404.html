@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — sntrLXdesigns</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .error-wrap {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+    }
+    .error-code {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(4rem, 15vw, 10rem);
+      font-weight: 700;
+      color: var(--blue-dim);
+      line-height: 1;
+    }
+    .error-msg {
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-wrap">
+    <div class="error-code">404</div>
+    <p class="error-msg">Page not found</p>
+    <a href="/" class="cta" style="opacity:1">Back to home</a>
+  </div>
+</body>
+</html>

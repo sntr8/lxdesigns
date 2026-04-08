@@ -9,15 +9,28 @@
     gtag('config', 'G-9564B07Y27');
   </script>
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-  <link rel="preload" as="image" href="img/desk_blur.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" as="image" href="img/desk_blur.webp">
   <meta name="description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sntrLXdesigns | Lighting Designer & MA3 Programmer Finland</title>
+  <link rel="canonical" href="https://lxdesigns.fi/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lxdesigns.fi/">
+  <meta property="og:title" content="sntrLXdesigns | Lighting Designer & MA3 Programmer Finland">
+  <meta property="og:description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
+  <meta property="og:image" content="https://lxdesigns.fi/img/concert.webp">
+  <!-- X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="sntrLXdesigns | Lighting Designer & MA3 Programmer Finland">
+  <meta name="twitter:description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
+  <meta name="twitter:image" content="https://lxdesigns.fi/img/concert.webp">
   <link rel="stylesheet" href="style.css">
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('.hero-bg').style.backgroundImage = "url('img/desk_blur.png')";
+      document.querySelector('.hero-bg').style.backgroundImage = "url('img/desk_blur.webp')";
     });
   </script>
   <script type="application/ld+json">
@@ -41,7 +54,7 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="logo">sntrLXdesigns</div>
+      <h1 class="logo">sntrLXdesigns<span class="sr-only"> — Finnish Lighting Designer &amp; MA3 Programmer</span></h1>
       <p class="tagline">Lighting design and programming for live events and productions</p>
       <a href="#contact" class="cta">Get in touch</a>
     </div>
@@ -57,7 +70,7 @@
       <p>sntrLXdesigns is a Finnish lighting design company. Design, programming, and operation for live events: from club shows to large-scale tours.</p>
       <div class="services">
         <div class="service-card hover-reveal">
-          <img src="img/concert.png" alt="Live concert stage lighting design featuring bright white beams and dramatic backlighting behind singer Antti Ketonen and his band.">
+          <img src="img/concert.webp" alt="Live concert stage lighting design featuring bright white beams and dramatic backlighting behind singer Antti Ketonen and his band.">
           <div class="service-card-overlay">
             <h3>Concert &amp; Tour Lighting</h3>
             <p>Lighting design, programming, and operation for touring artists and one-off shows. From building the showfile to running the desk on the night.</p>
@@ -65,14 +78,14 @@
           </div>
         </div>
         <div class="service-card hover-reveal">
-          <img src="img/prod.png" alt="Large-scale event production setup in an arena showing rows of lighting and technical equipment flight cases ready for stage assembly.">
+          <img src="img/prod.webp" alt="Large-scale event production setup in an arena showing rows of lighting and technical equipment flight cases ready for stage assembly.">
           <div class="service-card-overlay">
             <h3>Event Production</h3>
             <p>Corporate events, trade exhibitions, and special occasions. Full lighting solutions from concept to showtime, including equipment sourcing when needed.</p>
           </div>
         </div>
         <div class="service-card hover-reveal">
-          <img src="img/viz.png" alt="3D CAD pre-visualization render of a concert stage lighting rig showing flown trusses, PA systems, and fixture placements.">
+          <img src="img/viz.webp" alt="3D CAD pre-visualization render of a concert stage lighting rig showing flown trusses, PA systems, and fixture placements.">
           <div class="service-card-overlay">
             <h3>Consulting &amp; Visualisation</h3>
             <p>Pre-production planning, MA3 programming, show automation and network integration, previz renders, and technical
@@ -88,7 +101,7 @@
     <div class="container designer-layout">
       <div class="designer-img-wrap">
         <div class="designer-img">
-          <img src="img/me.png" alt="Finnish lighting designer operating a grandMA3 lighting console and running show automation during a live concert performance.">
+          <img src="img/me.webp" alt="Finnish lighting designer operating a grandMA3 lighting console and running show automation during a live concert performance.">
         </div>
         <a href="https://www.instagram.com/tamminenphotography/" class="photo-credit" target="_blank" rel="noopener">Photo: @tamminenphotography</a>
       </div>
@@ -99,7 +112,7 @@
           the core vision stays consistent from the studio to the stage.</p>
         <p>I work closely with artists and teams to craft dynamic looks that serve the story on stage. Whether adapting a
           showfile for a tight club fit or scaling up for a festival stage, I focus on precision and impact. Currently touring
-          as LD/OP with Antti Ketonen.</p>
+          as LD/OP with Antti Ketonen. Based in Finland, available for projects internationally.</p>
       </div>
     </div>
   </section>
@@ -111,7 +124,7 @@
       <p class="section-sub">Selected work — more available on request.</p>
       <div class="portfolio-grid">
         <div class="portfolio-item" data-gallery="antti-ketonen" tabindex="0" role="button">
-          <img src="portfolio/thumb.php?dir=antti-ketonen&file=ak_stage.png" alt="Antti Ketonen live concert lighting design and stage automation by sntrLXdesigns">
+          <img src="portfolio/thumb.php?dir=antti-ketonen&file=ak_stage.webp" alt="Antti Ketonen live concert lighting design and stage automation by sntrLXdesigns">
           <div class="portfolio-hover">
             <div class="portfolio-hover-title">Antti Ketonen</div>
             <div class="portfolio-hover-desc">Tour lighting design and programming for Antti Ketonen since 2024.</div>
@@ -212,7 +225,9 @@
     function showPhoto() {
       const g = galleries[current.key];
       const file = g.photos[current.index];
-      document.getElementById('lightbox-img').src = `portfolio/${current.key}/${file}`;
+      const imgEl = document.getElementById('lightbox-img');
+      imgEl.src = `portfolio/${current.key}/${file}`;
+      imgEl.alt = g.title;
 
       const counter = g.photos.length > 1 ? `\u2002${current.index + 1} / ${g.photos.length}` : '';
       const captionEl = document.getElementById('lightbox-caption');
