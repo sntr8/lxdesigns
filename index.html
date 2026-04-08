@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9564B07Y27"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,6 +13,7 @@
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="preload" as="image" href="img/desk_blur.webp">
+  <link rel="preload" href="fonts/Orbitron-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,22 +31,44 @@
   <meta name="twitter:description" content="sntrLXdesigns is a Finnish lighting design company providing design, MA3 programming, and show automation for live concerts, tours, and corporate events.">
   <meta name="twitter:image" content="https://lxdesigns.fi/img/concert.webp">
   <link rel="stylesheet" href="style.css">
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('.hero-bg').style.backgroundImage = "url('img/desk_blur.webp')";
-    });
-  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["ProfessionalService", "LocalBusiness"],
+    "@id": "https://lxdesigns.fi/#business",
     "name": "sntrLXdesigns",
     "description": "Finnish lighting designer specialising in live concerts, touring productions, and MA3 programming.",
+    "url": "https://lxdesigns.fi",
     "address": {
       "@type": "PostalAddress",
+      "addressLocality": "Helsinki",
       "addressCountry": "FI"
     },
-    "url": "https://lxdesigns.fi"
+    "areaServed": [
+      { "@type": "Country", "name": "Finland" },
+      { "@type": "AdministrativeArea", "name": "Europe" }
+    ],
+    "founder": {
+      "@type": "Person",
+      "@id": "https://lxdesigns.fi/#person",
+      "name": "Santeri Lehtonen",
+      "jobTitle": "Lighting Designer & MA3 Programmer",
+      "sameAs": "https://www.instagram.com/_sntr_/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "sntr@lxdesigns.fi",
+      "contactType": "customer enquiries"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Y-tunnus",
+      "value": "3583437-1"
+    },
+    "taxID": "3583437-1",
+    "knowsAbout": ["grandMA3", "Concert Lighting", "Touring Production", "Live Event Production"],
+    "sameAs": ["https://www.instagram.com/_sntr_/"]
   }
   </script>
 </head>
@@ -67,10 +92,10 @@
   <section id="about">
     <div class="container">
       <h2>What I do</h2>
-      <p>sntrLXdesigns is a Finnish lighting design company. Design, programming, and operation for live events: from club shows to large-scale tours.</p>
+      <p>sntrLXdesigns is a Finnish lighting design company based in Helsinki. Design, programming, and operation for live events: from club shows to large-scale tours.</p>
       <div class="services">
         <div class="service-card hover-reveal">
-          <img src="img/concert.webp" alt="Live concert stage lighting design featuring bright white beams and dramatic backlighting behind singer Antti Ketonen and his band.">
+          <img src="img/concert.webp" width="800" height="534" alt="Live concert stage lighting design featuring bright white beams and dramatic backlighting behind singer Antti Ketonen and his band.">
           <div class="service-card-overlay">
             <h3>Concert &amp; Tour Lighting</h3>
             <p>Lighting design, programming, and operation for touring artists and one-off shows. From building the showfile to running the desk on the night.</p>
@@ -78,14 +103,14 @@
           </div>
         </div>
         <div class="service-card hover-reveal">
-          <img src="img/prod.webp" alt="Large-scale event production setup in an arena showing rows of lighting and technical equipment flight cases ready for stage assembly.">
+          <img src="img/prod.webp" width="800" height="600" alt="Large-scale event production setup in an arena showing rows of lighting and technical equipment flight cases ready for stage assembly.">
           <div class="service-card-overlay">
             <h3>Event Production</h3>
             <p>Corporate events, trade exhibitions, and special occasions. Full lighting solutions from concept to showtime, including equipment sourcing when needed.</p>
           </div>
         </div>
         <div class="service-card hover-reveal">
-          <img src="img/viz.webp" alt="3D CAD pre-visualization render of a concert stage lighting rig showing flown trusses, PA systems, and fixture placements.">
+          <img src="img/viz.webp" width="800" height="800" alt="3D CAD pre-visualization render of a concert stage lighting rig showing flown trusses, PA systems, and fixture placements.">
           <div class="service-card-overlay">
             <h3>Consulting &amp; Visualisation</h3>
             <p>Pre-production planning, MA3 programming, show automation and network integration, previz renders, and technical
@@ -101,7 +126,7 @@
     <div class="container designer-layout">
       <div class="designer-img-wrap">
         <div class="designer-img">
-          <img src="img/me.webp" alt="Finnish lighting designer operating a grandMA3 lighting console and running show automation during a live concert performance.">
+          <img src="img/me.webp" width="912" height="912" alt="Finnish lighting designer operating a grandMA3 lighting console and running show automation during a live concert performance.">
         </div>
         <a href="https://www.instagram.com/tamminenphotography/" class="photo-credit" target="_blank" rel="noopener">Photo: @tamminenphotography</a>
       </div>
@@ -112,10 +137,15 @@
           the core vision stays consistent from the studio to the stage.</p>
         <p>I work closely with artists and teams to craft dynamic looks that serve the story on stage. Whether adapting a
           showfile for a tight club fit or scaling up for a festival stage, I focus on precision and impact. Currently touring
-          as LD/OP with Antti Ketonen. Based in Finland, available for projects internationally.</p>
+          as LD/OP with Antti Ketonen. Based in Helsinki, Finland, available for projects internationally.</p>
       </div>
     </div>
   </section>
+
+  <!-- DIVIDER IMAGE -->
+  <div class="divider-img">
+    <img src="img/astrawash.webp" alt="Moving head fixtures on truss with red LED wall" width="800" height="708">
+  </div>
 
   <!-- PORTFOLIO -->
   <section id="portfolio">
@@ -140,14 +170,34 @@
     <div class="container">
       <h2>Contact</h2>
       <p class="section-sub">Available for projects in Finland and internationally.</p>
-      <div class="contact-details">
-        <a href="mailto:sntr@lxdesigns.fi" class="contact-link">sntr@lxdesigns.fi</a>
-        <div class="contact-social">
-          <a href="https://www.instagram.com/_sntr_/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
+
+      <div id="contact-form-wrap">
+        <form id="contact-form" novalidate>
+          <!-- Honeypot — hidden from real users -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <input type="hidden" name="ts" id="cf-ts">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAC2HoGBJnL5cCd1D" data-theme="dark"></div>
+          <div id="form-error" class="form-error" hidden></div>
+          <button type="submit" class="cta" id="cf-submit">Send message</button>
+        </form>
+
+        <div id="contact-thanks" hidden>
+          <p class="thanks-msg">Message sent. I'll be in touch soon.</p>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -262,11 +312,63 @@
       if (e.key === 'ArrowLeft') shiftPhoto(-1);
       if (e.key === 'ArrowRight') shiftPhoto(1);
     });
+
+    // Contact form
+    document.getElementById('cf-ts').value = Date.now();
+
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit');
+      const errEl = document.getElementById('form-error');
+      errEl.hidden = true;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('contact.php', {
+          method: 'POST',
+          body: new FormData(this)
+        });
+        const data = await res.json();
+        if (data.ok) {
+          document.getElementById('contact-form').hidden = true;
+          document.getElementById('contact-thanks').hidden = false;
+          // Fire GA4 conversion event for Google Ads
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'contact_form_submitted', { event_category: 'contact' });
+          }
+        } else {
+          errEl.textContent = data.error || 'Something went wrong. Please try again.';
+          errEl.hidden = false;
+          btn.disabled = false;
+          btn.textContent = 'Send message';
+          if (typeof turnstile !== 'undefined') turnstile.reset();
+        }
+      } catch {
+        errEl.textContent = 'Network error. Please try again.';
+        errEl.hidden = false;
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        if (typeof turnstile !== 'undefined') turnstile.reset();
+      }
+    });
   </script>
 
   <footer>
-    <p>&copy; 2026 sntrLXdesigns &mdash; Santeri Lehtonen &mdash; Y-tunnus: 3583437-1</p>
+    <div class="footer-contact">
+      <a href="https://www.instagram.com/_sntr_/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a id="footer-email" class="footer-email"></a>
+    </div>
+    <p class="footer-legal">&copy; 2026 sntrLXdesigns &mdash; Santeri Lehtonen &mdash; Y-tunnus: 3583437-1</p>
   </footer>
+  <script>
+    const fe = document.getElementById('footer-email');
+    const fa = ['sntr', 'lxdesigns.fi'].join('\u0040');
+    fe.href = 'mailto:' + fa;
+    fe.textContent = fa;
+  </script>
 
 </body>
 </html>

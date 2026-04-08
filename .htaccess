@@ -13,13 +13,19 @@
   ExpiresByType image/jpeg                "access plus 1 year"
   ExpiresByType image/x-icon              "access plus 1 year"
   ExpiresByType font/ttf                  "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
   ExpiresByType text/html                 "access plus 1 hour"
 </IfModule>
 
 # ===== SECURITY HEADERS =====
 <IfModule mod_headers.c>
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 </IfModule>
 
 # ===== CUSTOM 404 =====
 ErrorDocument 404 /404.html
+
+# ===== DENY SENSITIVE PATHS =====
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
